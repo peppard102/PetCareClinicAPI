@@ -24,7 +24,7 @@ namespace PetCareClinicAPI.Controllers
                 new Vet{ Id = 3, LastName = "Lannister", FirstName = "Jaime", Age = 45 },
                 new Vet{ Id = 4, LastName = "Stark", FirstName = "Arya", Age = 16 },
                 new Vet{ Id = 5, LastName = "Targaryen", FirstName = "Daenerys", Age = 5 },
-                new Vet{ Id = 6, LastName = "Melisandre", FirstName = "test", Age = 150 },
+                new Vet{ Id = 6, LastName = "Melisandre", FirstName = "Samantha", Age = 150 },
                 new Vet{ Id = 7, LastName = "Clifford", FirstName = "Ferrara", Age = 44 },
                 new Vet{ Id = 8, LastName = "Frances", FirstName = "Rossini", Age = 36 },
                 new Vet{ Id = 9, LastName = "Roxie", FirstName = "Harvey", Age = 65 }
