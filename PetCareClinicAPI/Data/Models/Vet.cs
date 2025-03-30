@@ -1,4 +1,4 @@
-﻿namespace PetCareClinic.Data.Models
+﻿namespace PetCareClinicAPI.Data.Models
 {
     public class Vet
     {
