@@ -55,7 +55,7 @@ namespace PetCareClinicAPI.Controllers
                 // Extract the answer
                 string answer = response.Value.Content[0].Text;
 
-                return Ok(new { Answer = answer });
+                return Ok(answer );
             }
             catch (Exception ex)
             {
