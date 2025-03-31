@@ -23,6 +23,7 @@ namespace PetCareClinicAPI.Controllers
             {
                 // Get the Key Vault URI from appsettings.json
                 string? keyVaultUrl = _configuration["KeyVault:VaultUri"];
+
                 if (string.IsNullOrEmpty(keyVaultUrl))
                 {
                     return StatusCode(500, "Key Vault URI is not configured properly.");
@@ -31,7 +32,6 @@ namespace PetCareClinicAPI.Controllers
                 string secretName = "OPENAI-API-KEY";
 
                 // Create a SecretClient using DefaultAzureCredential
-                //var client = new SecretClient(new Uri(keyVaultUrl), new DefaultAzureCredential());
                 var client = new SecretClient(vaultUri: new Uri(keyVaultUrl), credential: new DefaultAzureCredential());
 
 
