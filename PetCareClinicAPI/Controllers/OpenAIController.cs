@@ -32,14 +32,12 @@ namespace PetCareClinicAPI.Controllers
                     return StatusCode(500, "Key Vault URI is not configured properly.");
                 }
 
-                string secretName = "OPENAI-API-KEY";
-
                 // Create a SecretClient using DefaultAzureCredential
                 var secretClient = new SecretClient(vaultUri: new Uri(keyVaultUrl), credential: new DefaultAzureCredential());
 
 
                 // Retrieve the secret
-                KeyVaultSecret secret = await secretClient.GetSecretAsync(secretName);
+                KeyVaultSecret secret = await secretClient.GetSecretAsync("OPENAI-API-KEY");
 
                 // Initialize OpenAI client
                 var chatClient = new ChatClient("gpt-4o-mini", secret.Value);
