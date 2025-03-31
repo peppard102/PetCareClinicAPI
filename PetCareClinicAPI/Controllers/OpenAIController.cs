@@ -57,7 +57,7 @@ namespace PetCareClinicAPI.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error retrieving secret: {ex.Message}");
+                return StatusCode(500, $"Error retrieving answer: {ex.Message}");
             }
         }
     }
