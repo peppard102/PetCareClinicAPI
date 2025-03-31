@@ -19,8 +19,8 @@ namespace PetCareClinicAPI.Controllers
             _configuration = configuration;
         }
 
-        [HttpGet(Name = "GetDiagnosis")]
-        public async Task<IActionResult> Get()
+        [HttpPost(Name = "ask")]
+        public async Task<IActionResult> AskQuestion([FromBody] QuestionRequest request)
         {
             try
             {
@@ -42,12 +42,12 @@ namespace PetCareClinicAPI.Controllers
                 KeyVaultSecret secret = await secretClient.GetSecretAsync(secretName);
 
                 // Initialize OpenAI client
-                var chatClient = new ChatClient("gpt-3.5-turbo", secret.Value);
+                var chatClient = new ChatClient("gpt-4o-mini", secret.Value);
 
                 // Send the question to OpenAI
                 var messages = new List<ChatMessage>
                 {
-                    new UserChatMessage("how many toes do cats have")
+                    new UserChatMessage(request.Question)
                 };
 
                 var response = await chatClient.CompleteChatAsync(messages);
@@ -62,5 +62,10 @@ namespace PetCareClinicAPI.Controllers
                 return StatusCode(500, $"Error retrieving secret: {ex.Message}");
             }
         }
+    }
+
+    public class QuestionRequest
+    {
+        public required string Question { get; set; }
     }
 }
