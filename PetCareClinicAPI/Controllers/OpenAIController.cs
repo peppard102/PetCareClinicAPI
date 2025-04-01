@@ -11,10 +11,10 @@ namespace PetCareClinicAPI.Controllers
     [Route("[controller]")]
     public class OpenAIController : ControllerBase
     {
-        private readonly ILogger<VetsController> _logger;
+        private readonly ILogger<OpenAIController> _logger;
         private readonly IConfiguration _configuration;
 
-        public OpenAIController(ILogger<VetsController> logger, IConfiguration configuration)
+        public OpenAIController(ILogger<OpenAIController> logger, IConfiguration configuration)
         {
             _logger = logger;
             _configuration = configuration;
