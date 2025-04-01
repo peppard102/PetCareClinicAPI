@@ -11,11 +11,12 @@ namespace PetCareClinicAPI.Controllers
     [Route("[controller]")]
     public class OpenAIController : ControllerBase
     {
-
+        private readonly ILogger<VetsController> _logger;
         private readonly IConfiguration _configuration;
 
-        public OpenAIController(IConfiguration configuration)
+        public OpenAIController(ILogger<VetsController> logger, IConfiguration configuration)
         {
+            _logger = logger;
             _configuration = configuration;
         }
 
@@ -29,7 +30,8 @@ namespace PetCareClinicAPI.Controllers
 
                 if (string.IsNullOrEmpty(keyVaultUrl))
                 {
-                    return StatusCode(500, "Key Vault URI is not configured properly.");
+                    _logger.LogError("Key Vault URI is not configured properly.");
+                    return StatusCode(500, "An error occurred while processing your request.");
                 }
 
                 // Create a SecretClient using DefaultAzureCredential
@@ -57,7 +59,8 @@ namespace PetCareClinicAPI.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error retrieving answer: {ex.Message}");
+                _logger.LogError(ex, "Error accessing chat client.");
+                return StatusCode(500, "An error occurred while processing your request.");
             }
         }
     }
