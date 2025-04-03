@@ -8,6 +8,6 @@
 
         public required string State { get; set; }
 
-        public int ZipCode { get; set; }
+        public string ZipCode { get; set; }
     }
 }
