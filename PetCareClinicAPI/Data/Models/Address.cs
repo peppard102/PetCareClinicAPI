@@ -1,0 +1,13 @@
+﻿namespace PetCareClinicAPI.Data.Models
+{
+    public class Address
+    {
+        public required string Street { get; set; }
+
+        public required string City { get; set; }
+
+        public required string State { get; set; }
+
+        public int ZipCode { get; set; }
+    }
+}
