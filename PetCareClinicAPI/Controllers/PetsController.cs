@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetCareClinicAPI.Data.Models;
+using System.Collections.Generic;
 
 namespace PetCareClinicAPI.Controllers
 {
@@ -30,7 +31,7 @@ namespace PetCareClinicAPI.Controllers
                         Street = "123 Pine Lane",
                         City = "Frostville",
                         State = "WI",
-                        ZipCode = 54321
+                        ZipCode = "54321"
                     }
                 },
                 new Pet
@@ -44,7 +45,7 @@ namespace PetCareClinicAPI.Controllers
                         Street = "456 Golden Road",
                         City = "Westport",
                         State = "CA",
-                        ZipCode = 90210
+                        ZipCode = "90210"
                     }
                 },
                 new Pet
@@ -58,7 +59,7 @@ namespace PetCareClinicAPI.Controllers
                         Street = "456 Golden Road",
                         City = "Westport",
                         State = "CA",
-                        ZipCode = 90210
+                        ZipCode = "90210"
                     }
                 },
                 new Pet
@@ -72,7 +73,7 @@ namespace PetCareClinicAPI.Controllers
                         Street = "789 Winter Avenue",
                         City = "Northfield",
                         State = "MN",
-                        ZipCode = 55057
+                        ZipCode = "55057"
                     }
                 },
                 new Pet
@@ -86,7 +87,7 @@ namespace PetCareClinicAPI.Controllers
                         Street = "321 Dragon Street",
                         City = "Firestone",
                         State = "NV",
-                        ZipCode = 89123
+                        ZipCode = "89123"
                     }
                 },
                 new Pet
@@ -100,7 +101,7 @@ namespace PetCareClinicAPI.Controllers
                         Street = "654 Ruby Lane",
                         City = "Shadowvale",
                         State = "OR",
-                        ZipCode = 97401
+                        ZipCode = "97401"
                     }
                 },
                 new Pet
@@ -114,7 +115,7 @@ namespace PetCareClinicAPI.Controllers
                         Street = "987 Mischief Road",
                         City = "Tricksburg",
                         State = "NY",
-                        ZipCode = 12345
+                        ZipCode = "12345"
                     }
                 },
                 new Pet
@@ -128,7 +129,7 @@ namespace PetCareClinicAPI.Controllers
                         Street = "135 Reading Way",
                         City = "Bookville",
                         State = "MA",
-                        ZipCode = 2138
+                        ZipCode = "02138"
                     }
                 },
                 new Pet
@@ -142,7 +143,7 @@ namespace PetCareClinicAPI.Controllers
                         Street = "246 Puppy Lane",
                         City = "Playful",
                         State = "TX",
-                        ZipCode = 75001
+                        ZipCode = "75001"
                     }
                 }
             };
