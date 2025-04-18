@@ -47,6 +47,7 @@ namespace PetCareClinicAPI.Controllers
                 // Send the question to OpenAI
                 var messages = new List<ChatMessage>
                 {
+                    new SystemChatMessage("You are a helpful veterinary assistant giving general medical advice."),
                     new UserChatMessage(request.Question)
                 };
 
