@@ -20,8 +20,8 @@ namespace PetCareClinicAPI.Controllers
             _configuration = configuration;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AskQuestion([FromBody] SymptomRequest request)
+        [HttpPost(Name = "checkSymptoms")]
+        public async Task<IActionResult> CheckSymptoms([FromBody] SymptomRequest request)
         {
             try
             {
