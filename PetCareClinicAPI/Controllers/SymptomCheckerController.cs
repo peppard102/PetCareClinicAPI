@@ -11,13 +11,13 @@ namespace PetCareClinicAPI.Controllers
     [Route("[controller]")]
     public class SymptomCheckerController : ControllerBase
     {
+        private readonly SecretCacheService _secretService;
         private readonly ILogger<SymptomCheckerController> _logger;
-        private readonly IConfiguration _configuration;
 
-        public SymptomCheckerController(ILogger<SymptomCheckerController> logger, IConfiguration configuration)
+        public SymptomCheckerController(SecretCacheService secretService, ILogger<SymptomCheckerController> logger)
         {
+            _secretService = secretService;
             _logger = logger;
-            _configuration = configuration;
         }
 
         [HttpPost(Name = "checkSymptoms")]
@@ -25,24 +25,10 @@ namespace PetCareClinicAPI.Controllers
         {
             try
             {
-                // Get the Key Vault URI from appsettings.json
-                string? keyVaultUrl = _configuration["KeyVault:VaultUri"];
-
-                if (string.IsNullOrEmpty(keyVaultUrl))
-                {
-                    _logger.LogError("Key Vault URI is not configured properly.");
-                    return StatusCode(500, "An error occurred while processing your request.");
-                }
-
-                // Create a SecretClient using DefaultAzureCredential
-                var secretClient = new SecretClient(vaultUri: new Uri(keyVaultUrl), credential: new DefaultAzureCredential());
-
-
-                // Retrieve the secret
-                KeyVaultSecret secret = await secretClient.GetSecretAsync("OPENAI-API-KEY");
+                var secret = await _secretService.GetSecretAsync();
 
                 // Initialize OpenAI client
-                var chatClient = new ChatClient("gpt-4o-mini", secret.Value);
+                var chatClient = new ChatClient("gpt-4.1", secret);
 
                 // Send the question to OpenAI
                 var messages = new List<ChatMessage>

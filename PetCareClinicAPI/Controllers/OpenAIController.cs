@@ -11,13 +11,14 @@ namespace PetCareClinicAPI.Controllers
     [Route("[controller]")]
     public class OpenAIController : ControllerBase
     {
-        private readonly ILogger<OpenAIController> _logger;
-        private readonly IConfiguration _configuration;
 
-        public OpenAIController(ILogger<OpenAIController> logger, IConfiguration configuration)
+        private readonly SecretCacheService _secretService;
+        private readonly ILogger<OpenAIController> _logger;
+
+        public OpenAIController(SecretCacheService secretService, ILogger<OpenAIController> logger)
         {
+            _secretService = secretService;
             _logger = logger;
-            _configuration = configuration;
         }
 
         [HttpPost(Name = "ask")]
@@ -25,38 +26,19 @@ namespace PetCareClinicAPI.Controllers
         {
             try
             {
-                // Get the Key Vault URI from appsettings.json
-                string? keyVaultUrl = _configuration["KeyVault:VaultUri"];
+                var secret = await _secretService.GetSecretAsync();
+                var chatClient = new ChatClient("gpt-4.1", secret);
 
-                if (string.IsNullOrEmpty(keyVaultUrl))
-                {
-                    _logger.LogError("Key Vault URI is not configured properly.");
-                    return StatusCode(500, "An error occurred while processing your request.");
-                }
-
-                // Create a SecretClient using DefaultAzureCredential
-                var secretClient = new SecretClient(vaultUri: new Uri(keyVaultUrl), credential: new DefaultAzureCredential());
-
-
-                // Retrieve the secret
-                KeyVaultSecret secret = await secretClient.GetSecretAsync("OPENAI-API-KEY");
-
-                // Initialize OpenAI client
-                var chatClient = new ChatClient("gpt-4o-mini", secret.Value);
-
-                // Send the question to OpenAI
                 var messages = new List<ChatMessage>
-                {
-                    new SystemChatMessage("You are a helpful veterinary assistant giving general medical advice."),
-                    new UserChatMessage(request.Question)
-                };
+            {
+                new SystemChatMessage("You are a helpful veterinary assistant giving general medical advice."),
+                new UserChatMessage(request.Question)
+            };
 
                 var response = await chatClient.CompleteChatAsync(messages);
-
-                // Extract the answer
                 string answer = response.Value.Content[0].Text;
 
-                return Ok(answer );
+                return Ok(answer);
             }
             catch (Exception ex)
             {
