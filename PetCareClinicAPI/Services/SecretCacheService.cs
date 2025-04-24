@@ -16,8 +16,6 @@ public class SecretCacheService
         _cache = cache;
         _config = config;
         _logger = logger;
-
-        _ = LoadSecretAsync(); // fire and forget on startup
     }
 
     public async Task<string> GetSecretAsync()
