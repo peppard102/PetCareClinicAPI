@@ -16,7 +16,7 @@ namespace PetCareClinicAPI.Controllers
             _logger = logger;
         }
 
-        [HttpPost(Name = "checkSymptoms")]
+        [HttpPost]
         public async Task<IActionResult> CheckSymptoms([FromBody] SymptomRequest request)
         {
             try

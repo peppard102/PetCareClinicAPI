@@ -1,22 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using PetCareClinicAPI.Services;
 
 namespace PetCareClinicAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class OpenAIController : ControllerBase
+    public class GeneralQuestionsController : ControllerBase
     {
         private readonly OpenAIService _openAIService;
-        private readonly ILogger<OpenAIController> _logger;
+        private readonly ILogger<GeneralQuestionsController> _logger;
 
-        public OpenAIController(OpenAIService openAIService, ILogger<OpenAIController> logger)
+        public GeneralQuestionsController(OpenAIService openAIService, ILogger<GeneralQuestionsController> logger)
         {
             _openAIService = openAIService;
             _logger = logger;
         }
 
-        [HttpPost(Name = "ask")]
+        [HttpPost]
         public async Task<IActionResult> AskQuestion([FromBody] QuestionRequest request)
         {
             try
@@ -38,4 +38,4 @@ namespace PetCareClinicAPI.Controllers
     {
         public required string Question { get; set; }
     }
-}
+} 
