@@ -14,7 +14,7 @@ namespace PetCareClinicAPI.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetVets")]
+        [HttpGet]
         public IEnumerable<Vet> Get()
         {
             return new List<Vet>

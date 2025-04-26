@@ -21,6 +21,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddMemoryCache();
 builder.Services.AddSingleton<SecretCacheService>();
+builder.Services.AddSingleton<PetCareClinicAPI.Services.OpenAIService>();
 
 var app = builder.Build();
 
