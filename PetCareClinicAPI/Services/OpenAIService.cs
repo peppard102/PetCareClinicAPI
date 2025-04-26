@@ -28,6 +28,13 @@ namespace PetCareClinicAPI.Services
                 };
 
                 var response = await chatClient.CompleteChatAsync(messages);
+
+                if (response.Value.Content == null || response.Value.Content.Count == 0)
+                {
+                    _logger.LogError("The response content is empty.");
+                    throw new InvalidOperationException("The response content is empty.");
+                }
+
                 return response.Value.Content[0].Text;
             }
             catch (Exception ex)
