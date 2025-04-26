@@ -1,8 +1,4 @@
-﻿using Azure.Core;
-using Azure.Identity;
-using Azure.Security.KeyVault.Secrets;
-using Microsoft.AspNetCore.DataProtection.KeyManagement;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PetCareClinicAPI.Services;
 
 namespace PetCareClinicAPI.Controllers
