@@ -3,7 +3,7 @@ using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.AspNetCore.Mvc;
-using OpenAI.Chat;
+using PetCareClinicAPI.Services;
 
 namespace PetCareClinicAPI.Controllers
 {
@@ -11,13 +11,12 @@ namespace PetCareClinicAPI.Controllers
     [Route("[controller]")]
     public class OpenAIController : ControllerBase
     {
-
-        private readonly SecretCacheService _secretService;
+        private readonly OpenAIService _openAIService;
         private readonly ILogger<OpenAIController> _logger;
 
-        public OpenAIController(SecretCacheService secretService, ILogger<OpenAIController> logger)
+        public OpenAIController(OpenAIService openAIService, ILogger<OpenAIController> logger)
         {
-            _secretService = secretService;
+            _openAIService = openAIService;
             _logger = logger;
         }
 
@@ -26,23 +25,14 @@ namespace PetCareClinicAPI.Controllers
         {
             try
             {
-                var secret = await _secretService.GetSecretAsync();
-                var chatClient = new ChatClient("gpt-4.1", secret);
-
-                var messages = new List<ChatMessage>
-            {
-                new SystemChatMessage("You are a helpful veterinary assistant giving general medical advice."),
-                new UserChatMessage(request.Question)
-            };
-
-                var response = await chatClient.CompleteChatAsync(messages);
-                string answer = response.Value.Content[0].Text;
+                string systemPrompt = "You are a helpful veterinary assistant giving general medical advice.";
+                string answer = await _openAIService.ProcessOpenAIRequestAsync(systemPrompt, request.Question);
 
                 return Ok(answer);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error accessing chat client.");
+                _logger.LogError(ex, "Error accessing chat service.");
                 return StatusCode(500, "An error occurred while processing your request.");
             }
         }
