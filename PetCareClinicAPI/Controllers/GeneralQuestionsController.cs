@@ -21,7 +21,7 @@ namespace PetCareClinicAPI.Controllers
         {
             try
             {
-                string answer = await _openAIService.ProcessConversationAsync("You are a helpful veterinary assistant giving general medical advice.", request.QuestionAnswers);
+                string answer = await _openAIService.ProcessConversationAsync("You are a helpful veterinary assistant giving general medical advice.", request.conversationHistory);
 
                 return Ok(answer);
             }
@@ -35,7 +35,7 @@ namespace PetCareClinicAPI.Controllers
 
     public class QuestionRequest
     {
-        public required QuestionAnswer[] QuestionAnswers { get; set; }
+        public required QuestionAnswer[] conversationHistory { get; set; }
     }
     
     public class QuestionAnswer
