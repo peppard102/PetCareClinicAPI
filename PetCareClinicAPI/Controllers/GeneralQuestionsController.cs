@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using OpenAI.Chat;
 using PetCareClinicAPI.Services;
+using System.Text;
 
 namespace PetCareClinicAPI.Controllers
 {
@@ -21,8 +23,7 @@ namespace PetCareClinicAPI.Controllers
         {
             try
             {
-                string systemPrompt = "You are a helpful veterinary assistant giving general medical advice.";
-                string answer = await _openAIService.ProcessOpenAIRequestAsync(systemPrompt, request.Question);
+                string answer = await _openAIService.ProcessConversationAsync("You are a helpful veterinary assistant giving general medical advice.", request.QuestionAnswers);
 
                 return Ok(answer);
             }
@@ -36,6 +37,12 @@ namespace PetCareClinicAPI.Controllers
 
     public class QuestionRequest
     {
-        public required string Question { get; set; }
+        public required QuestionAnswer[] QuestionAnswers { get; set; }
+    }
+    
+    public class QuestionAnswer
+    {
+        public string question { get; set; }
+        public string answer { get; set; }
     }
 } 
