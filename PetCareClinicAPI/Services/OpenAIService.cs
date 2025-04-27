@@ -59,10 +59,10 @@ namespace PetCareClinicAPI.Services
 
                 foreach (var message in questionAnswers)
                 {
-                    messages.Add(new UserChatMessage(message.question));
+                    messages.Add(new UserChatMessage(message.Question));
 
-                    if (!string.IsNullOrEmpty(message.answer))
-                        messages.Add(new AssistantChatMessage(message.answer));
+                    if (!string.IsNullOrEmpty(message.Answer))
+                        messages.Add(new AssistantChatMessage(message.Answer));
                 }
 
                 var response = await chatClient.CompleteChatAsync(messages);

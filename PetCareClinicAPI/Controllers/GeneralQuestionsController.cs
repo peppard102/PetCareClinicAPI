@@ -40,7 +40,7 @@ namespace PetCareClinicAPI.Controllers
     
     public class QuestionAnswer
     {
-        public string question { get; set; }
-        public string answer { get; set; }
+        public string Question { get; set; }
+        public string Answer { get; set; }
     }
 } 
