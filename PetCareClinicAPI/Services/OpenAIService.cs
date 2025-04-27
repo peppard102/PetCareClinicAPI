@@ -60,7 +60,8 @@ namespace PetCareClinicAPI.Services
                 foreach (var message in questionAnswers)
                 {
                     messages.Add(new UserChatMessage(message.question));
-                    if (message.answer != "")
+
+                    if (!string.IsNullOrEmpty(message.answer))
                         messages.Add(new AssistantChatMessage(message.answer));
                 }
 
