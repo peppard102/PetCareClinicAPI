@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using OpenAI.Chat;
 using PetCareClinicAPI.Services;
-using System.Text;
 
 namespace PetCareClinicAPI.Controllers
 {
