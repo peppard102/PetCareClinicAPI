@@ -1,8 +1,12 @@
-﻿namespace PetCareClinicAPI.Data.Models
+﻿namespace PetCareClinicAPI.Models.Domain
 {
     public class Address
     {
+        public Guid Id { get; set; }
+
         public required string Street { get; set; }
+
+        public string? ApartmentNumber { get; set; }
 
         public required string City { get; set; }
 

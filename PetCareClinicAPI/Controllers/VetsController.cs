@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PetCareClinicAPI.Data.Models;
+using PetCareClinicAPI.Models.Domain;
 
 namespace PetCareClinicAPI.Controllers
 {

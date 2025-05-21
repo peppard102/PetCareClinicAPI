@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +24,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddMemoryCache();
 builder.Services.AddSingleton<SecretCacheService>();
 builder.Services.AddSingleton<PetCareClinicAPI.Services.OpenAIService>();
+
+// Add DbContext
+builder.Services.AddDbContext<PetCareClinicAPI.Data.PetCareClinicContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
