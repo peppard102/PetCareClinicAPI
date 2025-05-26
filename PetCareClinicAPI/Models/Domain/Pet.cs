@@ -2,7 +2,7 @@
 {
     public class Pet
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public required string FirstName { get; set; }
 
@@ -10,7 +10,7 @@
 
         public int Age { get; set; }
 
-        public Guid AddressId { get; set; }
+        public int AddressId { get; set; }
 
         public required Address Address { get; set; }
 

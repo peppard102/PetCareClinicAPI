@@ -26,8 +26,10 @@ namespace PetCareClinicAPI.Controllers
                     FirstName = "Sophie",
                     LastName = "Snow",
                     Age = 15,
+                    AddressId = 201,
                     Address = new Address
                     {
+                        Id = 201,
                         Street = "123 Pine Lane",
                         City = "Frostville",
                         State = "WI",
@@ -40,8 +42,10 @@ namespace PetCareClinicAPI.Controllers
                     FirstName = "Chanel",
                     LastName = "Lannister",
                     Age = 6,
+                    AddressId = 202,
                     Address = new Address
                     {
+                        Id = 202,
                         Street = "456 Golden Road",
                         City = "Westport",
                         State = "CA",
@@ -54,8 +58,10 @@ namespace PetCareClinicAPI.Controllers
                     FirstName = "Nico",
                     LastName = "Lannister",
                     Age = 3,
+                    AddressId = 203,
                     Address = new Address
                     {
+                        Id = 203,
                         Street = "456 Golden Road",
                         City = "Westport",
                         State = "CA",
@@ -68,8 +74,10 @@ namespace PetCareClinicAPI.Controllers
                     FirstName = "Tilly",
                     LastName = "Stark",
                     Age = 6,
+                    AddressId = 204,
                     Address = new Address
                     {
+                        Id = 204,
                         Street = "789 Winter Avenue",
                         City = "Northfield",
                         State = "MN",
@@ -82,8 +90,10 @@ namespace PetCareClinicAPI.Controllers
                     FirstName = "Cricket",
                     LastName = "Targaryen",
                     Age = 9,
+                    AddressId = 205,
                     Address = new Address
                     {
+                        Id = 205,
                         Street = "321 Dragon Street",
                         City = "Firestone",
                         State = "NV",
@@ -96,8 +106,10 @@ namespace PetCareClinicAPI.Controllers
                     FirstName = "Chester",
                     LastName = "Melisandre",
                     Age = 12,
+                    AddressId = 206,
                     Address = new Address
                     {
+                        Id = 206,
                         Street = "654 Ruby Lane",
                         City = "Shadowvale",
                         State = "OR",
@@ -110,8 +122,10 @@ namespace PetCareClinicAPI.Controllers
                     FirstName = "Loki",
                     LastName = "Clifford",
                     Age = 8,
+                    AddressId = 207,
                     Address = new Address
                     {
+                        Id = 207,
                         Street = "987 Mischief Road",
                         City = "Tricksburg",
                         State = "NY",
@@ -124,8 +138,10 @@ namespace PetCareClinicAPI.Controllers
                     FirstName = "Kindle",
                     LastName = "Frances",
                     Age = 5,
+                    AddressId = 208,
                     Address = new Address
                     {
+                        Id = 208,
                         Street = "135 Reading Way",
                         City = "Bookville",
                         State = "MA",
@@ -138,8 +154,10 @@ namespace PetCareClinicAPI.Controllers
                     FirstName = "Lou",
                     LastName = "Roxie",
                     Age = 2,
+                    AddressId = 209,
                     Address = new Address
                     {
+                        Id = 209,
                         Street = "246 Puppy Lane",
                         City = "Playful",
                         State = "TX",

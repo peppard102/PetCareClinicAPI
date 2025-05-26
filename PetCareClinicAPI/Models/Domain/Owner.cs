@@ -2,13 +2,13 @@
 {
     public class Owner
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public required string FirstName { get; set; }
 
         public required string LastName { get; set; }
 
-        public Guid AddressId { get; set; }
+        public int AddressId { get; set; }
 
         public required Address Address { get; set; }
         

@@ -2,9 +2,9 @@
 {
     public class PetOwner
     {
-        public Guid PetId { get; set; }
+        public int PetId { get; set; }
 
-        public Guid OwnerId { get; set; }
+        public int OwnerId { get; set; }
 
         public required Pet Pet { get; set; }
 

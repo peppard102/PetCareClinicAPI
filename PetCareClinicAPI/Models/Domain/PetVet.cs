@@ -2,9 +2,9 @@
 {
     public class PetVet
     {
-        public Guid PetId { get; set; }
+        public int PetId { get; set; }
 
-        public Guid VetId { get; set; }
+        public int VetId { get; set; }
 
         public required Pet Pet { get; set; }
 
