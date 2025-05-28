@@ -3,9 +3,9 @@ using PetCareClinicAPI.Models.Domain;
 
 namespace PetCareClinicAPI.Data
 {
-    public class PetCareClinicContext : DbContext
+    public class PetCareClinicDbContext : DbContext
     {
-        public PetCareClinicContext(DbContextOptions<PetCareClinicContext> options) : base(options)
+        public PetCareClinicDbContext(DbContextOptions<PetCareClinicDbContext> options) : base(options)
         {
         }
 

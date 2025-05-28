@@ -28,7 +28,7 @@ builder.Services.AddSingleton<SecretCacheService>();
 builder.Services.AddSingleton<OpenAIService>();
 
 // Add DbContext
-builder.Services.AddDbContext<PetCareClinicContext>(options =>
+builder.Services.AddDbContext<PetCareClinicDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();

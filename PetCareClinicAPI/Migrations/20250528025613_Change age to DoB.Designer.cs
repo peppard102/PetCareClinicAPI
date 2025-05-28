@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PetCareClinicAPI.Data;
 
@@ -11,9 +12,11 @@ using PetCareClinicAPI.Data;
 namespace PetCareClinicAPI.Migrations
 {
     [DbContext(typeof(PetCareClinicDbContext))]
-    partial class PetCareClinicContextModelSnapshot : ModelSnapshot
+    [Migration("20250528025613_Change age to DoB")]
+    partial class ChangeagetoDoB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

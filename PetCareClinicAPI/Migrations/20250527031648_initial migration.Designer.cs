@@ -10,7 +10,7 @@ using PetCareClinicAPI.Data;
 
 namespace PetCareClinicAPI.Migrations
 {
-    [DbContext(typeof(PetCareClinicContext))]
+    [DbContext(typeof(PetCareClinicDbContext))]
     [Migration("20250527031648_initial migration")]
     partial class initialmigration
     {

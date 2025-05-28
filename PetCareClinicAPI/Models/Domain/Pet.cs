@@ -8,7 +8,7 @@
 
         public required string LastName { get; set; }
 
-        public int Age { get; set; }
+        public DateOnly DoB { get; set; }
 
         public int AddressId { get; set; }
 
