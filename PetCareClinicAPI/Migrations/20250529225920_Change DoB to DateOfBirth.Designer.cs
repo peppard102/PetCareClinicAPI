@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PetCareClinicAPI.Data;
 
@@ -11,9 +12,11 @@ using PetCareClinicAPI.Data;
 namespace PetCareClinicAPI.Migrations
 {
     [DbContext(typeof(PetCareClinicDbContext))]
-    partial class PetCareClinicContextModelSnapshot : ModelSnapshot
+    [Migration("20250529225920_Change DoB to DateOfBirth")]
+    partial class ChangeDoBtoDateOfBirth
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,8 +94,8 @@ namespace PetCareClinicAPI.Migrations
                     b.Property<int>("AddressId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
+                    b.Property<DateOnly>("DateOfBirth")
+                        .HasColumnType("date");
 
                     b.Property<string>("FirstName")
                         .IsRequired()

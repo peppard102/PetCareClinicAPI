@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PetCareClinicAPI.Data;
 using PetCareClinicAPI.Models.Domain;
 using System.Collections.Generic;
@@ -21,7 +22,9 @@ namespace PetCareClinicAPI.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Pet>> Get()
         {
-            var pets = _dbContext.Pets.ToList();
+            var pets = _dbContext.Pets
+                .Include(p => p.Address)
+                .ToList();
             return Ok(pets);
         }
     }
