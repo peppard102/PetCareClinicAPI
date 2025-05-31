@@ -4,7 +4,7 @@ using PetCareClinicAPI.Services;
 namespace PetCareClinicAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class GeneralQuestionsController : ControllerBase
     {
         private readonly OpenAIService _openAIService;
