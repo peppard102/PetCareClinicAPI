@@ -25,6 +25,7 @@ namespace PetCareClinicAPI.Controllers
             var pets = _dbContext.Pets
                 .Include(p => p.Address)
                 .ToList();
+
             return Ok(pets);
         }
     }
