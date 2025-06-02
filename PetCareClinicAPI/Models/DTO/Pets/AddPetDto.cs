@@ -1,8 +1,14 @@
-﻿namespace PetCareClinicAPI.Models.Domain
+﻿using PetCareClinicAPI.Models.Domain;
+
+namespace PetCareClinicAPI.Models.DTO.Pets
 {
-    public class Address
+    public class AddPetDto
     {
-        public int Id { get; set; }
+        public required string FirstName { get; set; }
+
+        public required string LastName { get; set; }
+
+        public DateTime DateOfBirth { get; set; }
 
         public required string Street { get; set; }
 
