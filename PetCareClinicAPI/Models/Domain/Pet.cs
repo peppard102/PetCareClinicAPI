@@ -12,7 +12,7 @@
 
         public int AddressId { get; set; }
 
-        public required Address Address { get; set; }
+        public Address? Address { get; set; }
 
         // Many-to-many: A pet can have multiple owners
         public List<PetOwner> PetOwners { get; set; } = new();

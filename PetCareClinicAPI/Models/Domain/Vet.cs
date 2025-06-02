@@ -12,7 +12,7 @@
 
         public required string Specialty { get; set; }
 
-        public required Address Address { get; set; }
+        public Address? Address { get; set; }
         
         // Many-to-many: A vet can see multiple pets
         public List<PetVet> PetVets { get; set; } = new();
