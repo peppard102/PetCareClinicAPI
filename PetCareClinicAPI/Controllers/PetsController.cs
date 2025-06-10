@@ -91,10 +91,7 @@ namespace PetCareClinicAPI.Controllers
                 };
 
                 await _dbContext.Addresses.AddAsync(addressToUse);
-                await _dbContext.SaveChangesAsync();
             }
-
-
             var petDomainModel = new Pet
             {
                 FirstName = p.FirstName,
