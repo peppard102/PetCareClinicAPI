@@ -22,11 +22,11 @@ namespace PetCareClinicAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Pet>> Get()
+        public async Task<ActionResult<IEnumerable<Pet>>> Get()
         {
-            var pets = _dbContext.Pets
+            var pets = await _dbContext.Pets
                 .Include(p => p.Address)
-                .ToList();
+                .ToListAsync();
 
             return Ok(pets);
         }
@@ -61,15 +61,15 @@ namespace PetCareClinicAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<int>> Create([FromBody] AddPetDto p)
+        public async Task<ActionResult<int>> Create([FromBody] AddPetDto pet)
         {
             // Match existing address so we don't add duplicates
             var existingAddress = await _dbContext.Addresses.FirstOrDefaultAsync(a =>
-                a.Street.ToLower().Trim() == p.Street.ToLower().Trim() &&
-                a.ApartmentNumber.ToLower().Trim() == p.ApartmentNumber.ToLower().Trim() &&
-                a.City.ToLower().Trim() == p.City.ToLower().Trim() &&
-                a.State.ToLower().Trim() == p.State.ToLower().Trim() &&
-                a.ZipCode.ToLower().Trim() == p.ZipCode.ToLower().Trim()
+                a.Street.ToLower().Trim() == pet.Street.ToLower().Trim() &&
+                a.ApartmentNumber.ToLower().Trim() == pet.ApartmentNumber.ToLower().Trim() &&
+                a.City.ToLower().Trim() == pet.City.ToLower().Trim() &&
+                a.State.ToLower().Trim() == pet.State.ToLower().Trim() &&
+                a.ZipCode.ToLower().Trim() == pet.ZipCode.ToLower().Trim()
             );
 
             Address addressToUse;
@@ -83,11 +83,11 @@ namespace PetCareClinicAPI.Controllers
                 // If no existing address, create a new one
                 addressToUse = new Address
                 {
-                    Street = p.Street,
-                    ApartmentNumber = p.ApartmentNumber,
-                    City = p.City,
-                    State = p.State,
-                    ZipCode = p.ZipCode
+                    Street = pet.Street,
+                    ApartmentNumber = pet.ApartmentNumber,
+                    City = pet.City,
+                    State = pet.State,
+                    ZipCode = pet.ZipCode
                 };
 
                 await _dbContext.Addresses.AddAsync(addressToUse);
@@ -96,9 +96,9 @@ namespace PetCareClinicAPI.Controllers
 
             var petDomainModel = new Pet
             {
-                FirstName = p.FirstName,
-                LastName = p.LastName,
-                DateOfBirth = p.DateOfBirth,
+                FirstName = pet.FirstName,
+                LastName = pet.LastName,
+                DateOfBirth = pet.DateOfBirth,
                 AddressId = addressToUse.Id,
             };
 
