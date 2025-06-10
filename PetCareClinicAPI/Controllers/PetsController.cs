@@ -69,7 +69,7 @@ namespace PetCareClinicAPI.Controllers
                 a.ApartmentNumber.ToLower().Trim() == p.ApartmentNumber.ToLower().Trim() &&
                 a.City.ToLower().Trim() == p.City.ToLower().Trim() &&
                 a.State.ToLower().Trim() == p.State.ToLower().Trim() &&
-                a.ZipCode == p.ZipCode
+                a.ZipCode.ToLower().Trim() == p.ZipCode.ToLower().Trim()
             );
 
             Address addressToUse;
