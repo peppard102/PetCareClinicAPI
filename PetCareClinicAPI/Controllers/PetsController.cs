@@ -34,9 +34,9 @@ namespace PetCareClinicAPI.Controllers
 
         [HttpGet]
         [Route("{id:int}")]
-        public ActionResult<Pet> GetById([FromRoute] int id)
+        public async Task<ActionResult<Pet>> GetById([FromRoute] int id)
         {
-            var pet = _dbContext.Pets.Find(id);
+            var pet = await _dbContext.Pets.FindAsync(id);
 
             if (pet == null)
             {
